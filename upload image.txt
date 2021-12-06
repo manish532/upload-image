@@ -1,0 +1,20 @@
+<--------------------How to upload image and save image name in database------------------->      
+
+ $resualt = User::where('id',$id)->first();
+   
+       if($request->file('resume') != null){
+  
+            $file = $request->file('resume');
+            $imageName = time().'.'.$file->getClientOriginalExtension();             
+            $file->move(public_path('images/users_resume'), $imageName);  
+            $resualt->resume = $imageName;
+           
+           }else{
+     
+             $resualt->resume = "demo.webp";
+           
+           }
+
+           $res = $resualt->save();
+
+<--------------------How to upload image and save image name in database------------------->      
